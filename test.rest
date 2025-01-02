@@ -1,3 +1,0 @@
-### Get chat list
-GET http://localhost:6688/api/chat
-Content-Type: application/json

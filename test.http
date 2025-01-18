@@ -37,10 +37,26 @@ Content-Type: application/json
     client.global.set("token", jsonPath(response.body, '$.token'));
  %}
 
-### get chat list
-GET http://localhost:6688/api/chat
-Authorization: Bearer {{token}}
-
 ### get user list
 GET http://localhost:6688/api/users
+Authorization: Bearer {{token}}
+
+### create chat
+POST http://localhost:6688/api/chats
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "name": "Alice and Bob",
+  "members": [1, 2],
+  "public": false
+}
+
+
+### get chat list
+GET http://localhost:6688/api/chats
+Authorization: Bearer {{token}}
+
+### get chat by id
+GET http://localhost:6688/api/chats/1
 Authorization: Bearer {{token}}

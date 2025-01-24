@@ -15,10 +15,10 @@ POST http://localhost:6688/api/signup
 Content-Type: application/json
 
 {
-"workspace": "acme",
-"fullname": "Alice Chen",
-"email": "alice@acme.org",
-"password": "123456"
+  "workspace": "acme",
+  "fullname": "Alice Chen",
+  "email": "alice@acme.org",
+  "password": "123456"
 }
 
 
@@ -35,7 +35,7 @@ Content-Type: application/json
 
 > {%
     client.global.set("token", jsonPath(response.body, '$.token'));
- %}
+%}
 
 ### get user list
 GET http://localhost:6688/api/users
@@ -48,7 +48,10 @@ Content-Type: application/json
 
 {
   "name": "Alice and Bob",
-  "members": [1, 2],
+  "members": [
+    1,
+    2
+  ],
   "public": false
 }
 
@@ -82,4 +85,18 @@ Hello, World!
 
 ### get files
 GET http://localhost:6688/api/files/1/65d/947/7624fa4dab16a575b93a4cb408f4ea6c86.jpg
+Authorization: Bearer {{token}}
+
+### send a message
+POST http://localhost:6688/api/chats/1
+Authorization: Bearer {{token}}
+Content-Type: application/json
+
+{
+  "content": "Hello, World!",
+  "files": []
+}
+
+### list messages
+GET http://localhost:6688/api/chats/1/messages?limit=10
 Authorization: Bearer {{token}}

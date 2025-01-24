@@ -1,20 +1,31 @@
-use crate::models::ChatFile;
+use crate::models::{ChatFile, CreateMessage, ListMessages};
 use crate::{AppError, AppState, User};
 use axum::http::{HeaderMap, StatusCode};
 use axum::{
-    extract::{Multipart, Path, State},
+    extract::{Multipart, Path, Query, State},
     response::IntoResponse,
     Extension, Json,
 };
 use tokio::fs;
 use tracing::{info, warn};
 
-pub(crate) async fn send_message_handler() -> impl IntoResponse {
-    "Send message"
+pub(crate) async fn send_message_handler(
+    Extension(user): Extension<User>,
+    State(state): State<AppState>,
+    Path(id): Path<u64>,
+    Json(input): Json<CreateMessage>,
+) -> Result<impl IntoResponse, AppError> {
+    let msg = state.create_message(input, id, user.id as _).await?;
+    Ok(Json(msg))
 }
 
-pub(crate) async fn list_message_handler() -> impl IntoResponse {
-    "List messages"
+pub(crate) async fn list_message_handler(
+    State(state): State<AppState>,
+    Path(id): Path<u64>,
+    Query(input): Query<ListMessages>,
+) -> Result<impl IntoResponse, AppError> {
+    let messages = state.list_messages(input, id).await?;
+    Ok(Json(messages))
 }
 
 pub(crate) async fn file_handler(

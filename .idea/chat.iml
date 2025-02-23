@@ -5,6 +5,7 @@
       <sourceFolder url="file://$MODULE_DIR$/chat_server/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/notify_server/src" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/chat_server/examples" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/chat_core/src" isTestSource="false" />
       <excludeFolder url="file://$MODULE_DIR$/chat_server/target" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>

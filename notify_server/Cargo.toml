@@ -2,12 +2,14 @@
 name = "notify-server"
 version = "0.1.0"
 edition = "2021"
+license = "MIT"
 
 [dependencies]
 anyhow = { workspace = true }
 axum = { workspace = true }
 futures = "0.3.31"
 futures-util = "0.3.31"
+sqlx = { workspace = true }
 tokio = { workspace = true }
 tokio-stream = "0.1.17"
 tracing = { workspace = true }

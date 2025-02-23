@@ -1,5 +1,4 @@
-use super::ChatFile;
-use crate::AppError;
+use crate::{models::ChatFile, AppError};
 use sha1::{Digest, Sha1};
 use std::path::{Path, PathBuf};
 use std::str::FromStr;
